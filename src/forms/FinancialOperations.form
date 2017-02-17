@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="grp_financialOperation">
+    </Component>
+    <Container class="javax.swing.JMenuBar" name="mnu_bar">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+      <SubComponents>
+        <Menu class="javax.swing.JMenu" name="jMenu1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="File"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Edit"/>
+          </Properties>
+        </Menu>
+      </SubComponents>
+    </Container>
+  </NonVisualComponents>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="btn_clear" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_fullSchedule" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_calculate" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lbl_valueAtEnd" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_term" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_interestRate" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="lbl_financialOperation" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                          <Component id="rdo_annuity" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                          <Component id="rdo_loan" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="lbl_monthlyDeposit" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txt_interestRate" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_monthlyDeposit" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_term" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_valueAtEnd" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="65" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbl_financialOperation" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rdo_loan" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rdo_annuity" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbl_monthlyDeposit" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txt_monthlyDeposit" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <Component id="lbl_interestRate" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="txt_interestRate" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbl_term" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txt_term" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="btn_calculate" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbl_valueAtEnd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txt_valueAtEnd" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btn_fullSchedule" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btn_clear" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="29" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lbl_financialOperation">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Financial Operation:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="rdo_loan">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="grp_financialOperation"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Loan"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="rdo_annuity">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="grp_financialOperation"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Annuity"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbl_monthlyDeposit">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Monthly Deposit:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbl_interestRate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Annual Interest Rate (6% = 0.06)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbl_term">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Term (months)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbl_valueAtEnd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Value at end of annuity"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txt_monthlyDeposit">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[6, 40]"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[60, 20]"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txt_interestRate">
+      <Properties>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[60, 20]"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txt_term">
+      <Properties>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[60, 20]"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txt_valueAtEnd">
+      <Properties>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[60, 20]"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_calculate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Calculate"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_fullSchedule">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Full Schedule"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_clear">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Clear"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
