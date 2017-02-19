@@ -10,7 +10,7 @@ public class Annuity {
     private int term;
     private boolean built;  //whether fv has been built
     //private double fv;     //final value of annuity
-    private double[] bbal, iearn, ebal;
+    private double[] beginningBalance, interestEarned, endingBalance;
     
     public Annuity(double d, double r, int term) {
         //constructor for class
@@ -19,7 +19,7 @@ public class Annuity {
         this.term = term;
         this.built = false;
         //this.fv = 0;
-        calcAnnuity();
+        calculateAnnuity();
     }
     public double getDeposit() {
         return this.deposit;
@@ -32,40 +32,40 @@ public class Annuity {
     }
     public double getFinalValue() {
         if (!built) {
-            calcAnnuity();
+            calculateAnnuity();
         }
-        return this.ebal[this.term-1];
+        return this.endingBalance[this.term-1];
     }
-    public double getBegBal(int mo) {
-        if (!built) { calcAnnuity(); }
+    public double getBeginningBalance(int mo) {
+        if (!built) { calculateAnnuity(); }
         if (mo < 1 || mo > this.term) { return 0; }
-        return this.bbal[mo-1];
+        return this.beginningBalance[mo-1];
     }
-    public double getIntEarned(int mo) {
-        if (!built) { calcAnnuity(); }
+    public double getInterestEarned(int mo) {
+        if (!built) { calculateAnnuity(); }
         if (mo < 1 || mo > this.term) { return 0; }
-        return this.iearn[mo-1];
+        return this.interestEarned[mo-1];
     }
-    public double getEndBal(int mo) {
-        if (!built) { calcAnnuity(); }
+    public double getEndingBalance(int mo) {
+        if (!built) { calculateAnnuity(); }
         if (mo < 1 || mo > this.term) { return 0; }
-        return this.ebal[mo-1];
+        return this.endingBalance[mo-1];
     }
-    private void calcAnnuity() {
+    private void calculateAnnuity() {
         //internal logic for building an annuity...
         //this.fv = 0;
         //double intearned=0;
-        this.bbal = new double[this.term];
-        this.iearn = new double[this.term];
-        this.ebal = new double[this.term];
+        this.beginningBalance = new double[this.term];
+        this.interestEarned = new double[this.term];
+        this.endingBalance = new double[this.term];
         
-        bbal[0] = 0;
+        beginningBalance[0] = 0;
         for (int i=0; i<this.term; i++) {
             if (i > 0) {
-                this.bbal[i] = this.ebal[i-1];
+                this.beginningBalance[i] = this.endingBalance[i-1];
             }
-            this.iearn[i] = (this.bbal[i] + this.deposit )* (this.rate/12.0);
-            this.ebal[i] = this.bbal[i] + this.iearn[i] + this.deposit;
+            this.interestEarned[i] = (this.beginningBalance[i] + this.deposit )* (this.rate/12.0);
+            this.endingBalance[i] = this.beginningBalance[i] + this.interestEarned[i] + this.deposit;
             //this.fv = this.fv + intearned + this.deposit;
         }
         this.built = true;

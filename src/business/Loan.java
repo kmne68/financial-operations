@@ -6,68 +6,68 @@ package business;
  * @author ptd
  */
 public class Loan {
-    private double prin, rate, mopmt;
+    private double principle, rate, monthlyPayment;
     private int term;
     private boolean built;
-    private double[] bbal, ichg, ebal;
+    private double[] beginningBalance, interestCharge, endingBalance;
     
     public Loan(double p, double r, int t) {
-        this.prin = p;
+        this.principle = p;
         this.rate = r;
         this.term = t;
-        mopmt = 0;
+        monthlyPayment = 0;
         built = false;
         buildLoan();
     }
 
-    public double getPrin() {
-        return prin;
+    public double getPrinciple() {
+        return principle;
     }
 
     public double getRate() {
         return rate;
     }
 
-    public double getMopmt() {
+    public double getMonthlyPayment() {
         if (!built) { buildLoan(); }
-        return mopmt;
+        return monthlyPayment;
     }
 
     public int getTerm() {
         return term;
     }
-    public double getBegBal(int mo) {
+    public double getBeginningBalance(int mo) {
         if (!built) { buildLoan(); }
         if (mo < 1 || mo > this.term) { return 0; }
-        return this.bbal[mo-1];
+        return this.beginningBalance[mo-1];
     }
-    public double getIntChg(int mo) {
+    public double getInterestCharge(int mo) {
         if (!built) { buildLoan(); }
         if (mo < 1 || mo > this.term) { return 0; }
-        return this.ichg[mo-1];
+        return this.interestCharge[mo-1];
     }
-    public double getEndBal(int mo) {
+    public double getEndingBalance(int mo) {
         if (!built) { buildLoan(); }
         if (mo < 1 || mo > this.term) { return 0; }
-        return this.ebal[mo-1];
+        return this.endingBalance[mo-1];
     }
     private void buildLoan() {
         //calculate Monthly Payment....
         double morate = this.rate / 12.0;
         double denom = Math.pow((1+morate),this.term) - 1;
-        this.mopmt = (morate + morate/denom) * this.prin;
+        this.monthlyPayment = (morate + morate/denom) * this.principle;
         
-        this.bbal = new double[this.term];
-        this.ichg = new double[this.term];
-        this.ebal = new double[this.term];
+        this.beginningBalance = new double[this.term];
+        this.interestCharge = new double[this.term];
+        this.endingBalance = new double[this.term];
         
-        this.bbal[0] = this.prin;
+        this.beginningBalance[0] = this.principle;
         for(int i=0; i< this.term; i++) {
             if (i > 0) {
-                this.bbal[i] = this.ebal[i-1];
+                this.beginningBalance[i] = this.endingBalance[i-1];
             }
-            this.ichg[i] = this.bbal[i] * morate;
-            this.ebal[i] = this.bbal[i] + this.ichg[i] - this.mopmt;
+            this.interestCharge[i] = this.beginningBalance[i] * morate;
+            this.endingBalance[i] = this.beginningBalance[i] + this.interestCharge[i] - this.monthlyPayment;
         }
     }
 }
