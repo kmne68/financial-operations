@@ -5,22 +5,26 @@ package business;
  *
  * @author ptd
  */
-public class Annuity {
-    private double deposit, rate;
+public class Annuity extends Financial {
+    
+    private double deposit;
+    private double rate;
     private int term;
     private boolean built;  //whether fv has been built
     //private double fv;     //final value of annuity
     private double[] beginningBalance, interestEarned, endingBalance;
     
-    public Annuity(double d, double r, int term) {
+    public Annuity() {
+        super();
         //constructor for class
-        this.deposit = d;
-        this.rate = r;
-        this.term = term;
+
         this.built = false;
+        
         //this.fv = 0;
         calculateAnnuity();
     }
+    
+    
     public double getDeposit() {
         return this.deposit;
     }
@@ -69,6 +73,36 @@ public class Annuity {
             //this.fv = this.fv + intearned + this.deposit;
         }
         this.built = true;
+    }
+
+    @Override
+    public double getPrincipalFactor(int month) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public double getInterestFactor(int month) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getBeginningBalanceDescription() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getPrincipleFactorDescription() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getInterestFactorDescription() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getEndingBalanceDescription() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
