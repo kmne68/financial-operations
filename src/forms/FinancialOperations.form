@@ -45,7 +45,7 @@
                   <Component id="btn_fullSchedule" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_calculate" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lbl_valueAtEnd" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_resultDescription" min="-2" max="-2" attributes="0"/>
                       <Component id="lbl_term" min="-2" max="-2" attributes="0"/>
                       <Component id="lbl_interestRate" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
@@ -57,7 +57,7 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="lbl_monthlyDeposit" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_amountDescription" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txt_interestRate" min="-2" max="-2" attributes="0"/>
@@ -82,15 +82,12 @@
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lbl_monthlyDeposit" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbl_amountDescription" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txt_monthlyDeposit" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Component id="lbl_interestRate" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="lbl_interestRate" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="txt_interestRate" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -102,7 +99,7 @@
               <Component id="btn_calculate" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lbl_valueAtEnd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbl_resultDescription" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txt_valueAtEnd" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -136,7 +133,7 @@
         <Property name="text" type="java.lang.String" value="Annuity"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbl_monthlyDeposit">
+    <Component class="javax.swing.JLabel" name="lbl_amountDescription">
       <Properties>
         <Property name="text" type="java.lang.String" value="Monthly Deposit:"/>
       </Properties>
@@ -151,7 +148,7 @@
         <Property name="text" type="java.lang.String" value="Term (months)"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbl_valueAtEnd">
+    <Component class="javax.swing.JLabel" name="lbl_resultDescription">
       <Properties>
         <Property name="text" type="java.lang.String" value="Value at end of annuity"/>
       </Properties>

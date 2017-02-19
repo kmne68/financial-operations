@@ -34,10 +34,10 @@ public class FinancialOperations extends javax.swing.JPanel {
         lbl_financialOperation = new javax.swing.JLabel();
         rdo_loan = new javax.swing.JRadioButton();
         rdo_annuity = new javax.swing.JRadioButton();
-        lbl_monthlyDeposit = new javax.swing.JLabel();
+        lbl_amountDescription = new javax.swing.JLabel();
         lbl_interestRate = new javax.swing.JLabel();
         lbl_term = new javax.swing.JLabel();
-        lbl_valueAtEnd = new javax.swing.JLabel();
+        lbl_resultDescription = new javax.swing.JLabel();
         txt_monthlyDeposit = new javax.swing.JTextField();
         txt_interestRate = new javax.swing.JTextField();
         txt_term = new javax.swing.JTextField();
@@ -60,13 +60,13 @@ public class FinancialOperations extends javax.swing.JPanel {
         grp_financialOperation.add(rdo_annuity);
         rdo_annuity.setText("Annuity");
 
-        lbl_monthlyDeposit.setText("Monthly Deposit:");
+        lbl_amountDescription.setText("Monthly Deposit:");
 
         lbl_interestRate.setText("Annual Interest Rate (6% = 0.06)");
 
         lbl_term.setText("Term (months)");
 
-        lbl_valueAtEnd.setText("Value at end of annuity");
+        lbl_resultDescription.setText("Value at end of annuity");
 
         txt_monthlyDeposit.setMinimumSize(new java.awt.Dimension(6, 40));
         txt_monthlyDeposit.setPreferredSize(new java.awt.Dimension(60, 20));
@@ -94,7 +94,7 @@ public class FinancialOperations extends javax.swing.JPanel {
                     .addComponent(btn_fullSchedule)
                     .addComponent(btn_calculate)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbl_valueAtEnd)
+                        .addComponent(lbl_resultDescription)
                         .addComponent(lbl_term)
                         .addComponent(lbl_interestRate)
                         .addGroup(layout.createSequentialGroup()
@@ -104,7 +104,7 @@ public class FinancialOperations extends javax.swing.JPanel {
                             .addGap(63, 63, 63)
                             .addComponent(rdo_loan)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_monthlyDeposit)
+                        .addComponent(lbl_amountDescription)
                         .addGap(176, 176, 176)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_interestRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -123,13 +123,11 @@ public class FinancialOperations extends javax.swing.JPanel {
                     .addComponent(rdo_annuity))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_monthlyDeposit)
+                    .addComponent(lbl_amountDescription)
                     .addComponent(txt_monthlyDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lbl_interestRate))
+                    .addComponent(lbl_interestRate)
                     .addComponent(txt_interestRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -139,7 +137,7 @@ public class FinancialOperations extends javax.swing.JPanel {
                 .addComponent(btn_calculate)
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_valueAtEnd)
+                    .addComponent(lbl_resultDescription)
                     .addComponent(txt_valueAtEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btn_fullSchedule)
@@ -157,11 +155,11 @@ public class FinancialOperations extends javax.swing.JPanel {
     private javax.swing.ButtonGroup grp_financialOperation;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JLabel lbl_amountDescription;
     private javax.swing.JLabel lbl_financialOperation;
     private javax.swing.JLabel lbl_interestRate;
-    private javax.swing.JLabel lbl_monthlyDeposit;
+    private javax.swing.JLabel lbl_resultDescription;
     private javax.swing.JLabel lbl_term;
-    private javax.swing.JLabel lbl_valueAtEnd;
     private javax.swing.JMenuBar mnu_bar;
     private javax.swing.JRadioButton rdo_annuity;
     private javax.swing.JRadioButton rdo_loan;
