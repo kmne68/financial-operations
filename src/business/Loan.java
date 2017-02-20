@@ -7,6 +7,9 @@ package business;
  */
 public class Loan extends Financial {
     
+    public static final String AMOUNTDESCRIPTION = "Loan Amount";
+    public static final String RESULTDESCRIPTION = "Monthly Loan Payment";
+    
     private double monthlyPayment;
     private boolean built;
     private double[] beginningBalance;

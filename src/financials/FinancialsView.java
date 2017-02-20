@@ -4,7 +4,9 @@
 
 package financials;
 
+import business.Annuity;
 import business.Financial;
+import business.Loan;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -104,20 +106,20 @@ public class FinancialsView extends FrameView {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jtxtAmt = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jtxtRate = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jtxtTerm = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jtxtResult = new javax.swing.JTextField();
-        jradAnnuity = new javax.swing.JRadioButton();
-        jradLoan = new javax.swing.JRadioButton();
-        jbtnCalc = new javax.swing.JButton();
-        jbtnSched = new javax.swing.JButton();
-        jbtnClear = new javax.swing.JButton();
+        lbl_amount = new javax.swing.JLabel();
+        txt_amount = new javax.swing.JTextField();
+        lbl_annualRate = new javax.swing.JLabel();
+        txt_rate = new javax.swing.JTextField();
+        lbl_term = new javax.swing.JLabel();
+        txt_term = new javax.swing.JTextField();
+        lbl_financialOperation = new javax.swing.JLabel();
+        lbl_result = new javax.swing.JLabel();
+        txt_result = new javax.swing.JTextField();
+        rdo_annuity = new javax.swing.JRadioButton();
+        rdo_loan = new javax.swing.JRadioButton();
+        btn_calculate = new javax.swing.JButton();
+        btn_schedule = new javax.swing.JButton();
+        btn_clear = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
@@ -132,62 +134,72 @@ public class FinancialsView extends FrameView {
 
         mainPanel.setName("mainPanel"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(financials.FinancialsApp.class).getContext().getResourceMap(FinancialsView.class);
-        jLabel1.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
-        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
-        jLabel1.setName("jLabel1"); // NOI18N
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FinancialsView.class);
+        lbl_amount.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
+        lbl_amount.setText(resourceMap.getString("lbl_amount.text")); // NOI18N
+        lbl_amount.setName("lbl_amount"); // NOI18N
 
-        jtxtAmt.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jtxtAmt.setToolTipText(resourceMap.getString("jtxtAmt.toolTipText")); // NOI18N
-        jtxtAmt.setName("jtxtAmt"); // NOI18N
+        txt_amount.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txt_amount.setToolTipText(resourceMap.getString("txt_amount.toolTipText")); // NOI18N
+        txt_amount.setName("txt_amount"); // NOI18N
 
-        jLabel2.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
-        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
-        jLabel2.setName("jLabel2"); // NOI18N
+        lbl_annualRate.setFont(resourceMap.getFont("lbl_annualRate.font")); // NOI18N
+        lbl_annualRate.setText(resourceMap.getString("lbl_annualRate.text")); // NOI18N
+        lbl_annualRate.setName("lbl_annualRate"); // NOI18N
 
-        jtxtRate.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jtxtRate.setToolTipText(resourceMap.getString("jtxtRate.toolTipText")); // NOI18N
-        jtxtRate.setName("jtxtRate"); // NOI18N
+        txt_rate.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txt_rate.setToolTipText(resourceMap.getString("txt_rate.toolTipText")); // NOI18N
+        txt_rate.setName("txt_rate"); // NOI18N
 
-        jLabel3.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
-        jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
-        jLabel3.setName("jLabel3"); // NOI18N
+        lbl_term.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
+        lbl_term.setText(resourceMap.getString("lbl_term.text")); // NOI18N
+        lbl_term.setName("lbl_term"); // NOI18N
 
-        jtxtTerm.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jtxtTerm.setToolTipText(resourceMap.getString("jtxtTerm.toolTipText")); // NOI18N
-        jtxtTerm.setName("jtxtTerm"); // NOI18N
+        txt_term.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txt_term.setToolTipText(resourceMap.getString("txt_term.toolTipText")); // NOI18N
+        txt_term.setName("txt_term"); // NOI18N
 
-        jLabel5.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
-        jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
-        jLabel5.setName("jLabel5"); // NOI18N
+        lbl_financialOperation.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
+        lbl_financialOperation.setText(resourceMap.getString("lbl_financialOperation.text")); // NOI18N
+        lbl_financialOperation.setName("lbl_financialOperation"); // NOI18N
 
-        jLabel4.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
-        jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
-        jLabel4.setName("jLabel4"); // NOI18N
+        lbl_result.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
+        lbl_result.setText(resourceMap.getString("lbl_result.text")); // NOI18N
+        lbl_result.setName("lbl_result"); // NOI18N
 
-        jtxtResult.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jtxtResult.setToolTipText(resourceMap.getString("jtxtResult.toolTipText")); // NOI18N
-        jtxtResult.setName("jtxtResult"); // NOI18N
+        txt_result.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txt_result.setToolTipText(resourceMap.getString("txt_result.toolTipText")); // NOI18N
+        txt_result.setName("txt_result"); // NOI18N
 
-        buttonGroup1.add(jradAnnuity);
-        jradAnnuity.setFont(resourceMap.getFont("jradAnnuity.font")); // NOI18N
-        jradAnnuity.setText(resourceMap.getString("jradAnnuity.text")); // NOI18N
-        jradAnnuity.setName("jradAnnuity"); // NOI18N
+        buttonGroup1.add(rdo_annuity);
+        rdo_annuity.setFont(resourceMap.getFont("rdo_annuity.font")); // NOI18N
+        rdo_annuity.setText(resourceMap.getString("rdo_annuity.text")); // NOI18N
+        rdo_annuity.setName("rdo_annuity"); // NOI18N
+        rdo_annuity.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rdo_annuityItemStateChanged(evt);
+            }
+        });
 
-        buttonGroup1.add(jradLoan);
-        jradLoan.setFont(resourceMap.getFont("jradLoan.font")); // NOI18N
-        jradLoan.setText(resourceMap.getString("jradLoan.text")); // NOI18N
-        jradLoan.setName("jradLoan"); // NOI18N
+        buttonGroup1.add(rdo_loan);
+        rdo_loan.setFont(resourceMap.getFont("rdo_loan.font")); // NOI18N
+        rdo_loan.setText(resourceMap.getString("rdo_loan.text")); // NOI18N
+        rdo_loan.setName("rdo_loan"); // NOI18N
+        rdo_loan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rdo_loanItemStateChanged(evt);
+            }
+        });
 
-        jbtnCalc.setText(resourceMap.getString("jbtnCalc.text")); // NOI18N
-        jbtnCalc.setName("jbtnCalc"); // NOI18N
+        btn_calculate.setText(resourceMap.getString("btn_calculate.text")); // NOI18N
+        btn_calculate.setName("btn_calculate"); // NOI18N
 
-        jbtnSched.setText(resourceMap.getString("jbtnSched.text")); // NOI18N
-        jbtnSched.setEnabled(false);
-        jbtnSched.setName("jbtnSched"); // NOI18N
+        btn_schedule.setText(resourceMap.getString("btn_schedule.text")); // NOI18N
+        btn_schedule.setEnabled(false);
+        btn_schedule.setName("btn_schedule"); // NOI18N
 
-        jbtnClear.setText(resourceMap.getString("jbtnClear.text")); // NOI18N
-        jbtnClear.setName("jbtnClear"); // NOI18N
+        btn_clear.setText(resourceMap.getString("btn_clear.text")); // NOI18N
+        btn_clear.setName("btn_clear"); // NOI18N
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -197,36 +209,36 @@ public class FinancialsView extends FrameView {
                 .addGap(73, 73, 73)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_result, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtxtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_result, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
+                            .addComponent(lbl_amount, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_annualRate, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_term, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_financialOperation))
                         .addGap(18, 18, 18)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(jradAnnuity)
+                                .addComponent(rdo_annuity)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jradLoan))
-                            .addComponent(jtxtRate, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtxtAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtxtTerm, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(rdo_loan))
+                            .addComponent(txt_rate, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_amount, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_term, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(88, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addComponent(jbtnCalc)
+                        .addComponent(btn_calculate)
                         .addGap(149, 149, 149))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jbtnSched)
+                            .addComponent(btn_schedule)
                             .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(jbtnClear)
+                                .addComponent(btn_clear)
                                 .addGap(10, 10, 10)))
                         .addGap(150, 150, 150))))
         );
@@ -235,31 +247,31 @@ public class FinancialsView extends FrameView {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jradAnnuity)
-                    .addComponent(jradLoan))
+                    .addComponent(lbl_financialOperation)
+                    .addComponent(rdo_annuity)
+                    .addComponent(rdo_loan))
                 .addGap(31, 31, 31)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jtxtAmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_amount)
+                    .addComponent(txt_amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jtxtRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_annualRate)
+                    .addComponent(txt_rate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jtxtTerm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_term)
+                    .addComponent(txt_term, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jbtnCalc)
+                .addComponent(btn_calculate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtxtResult, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(txt_result, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_result, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
-                .addComponent(jbtnSched)
+                .addComponent(btn_schedule)
                 .addGap(18, 18, 18)
-                .addComponent(jbtnClear)
+                .addComponent(btn_clear)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -268,7 +280,7 @@ public class FinancialsView extends FrameView {
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
         fileMenu.setName("fileMenu"); // NOI18N
 
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(financials.FinancialsApp.class).getContext().getActionMap(FinancialsView.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FinancialsView.class, this);
         exitMenuItem.setAction(actionMap.get("quit")); // NOI18N
         exitMenuItem.setName("exitMenuItem"); // NOI18N
         fileMenu.add(exitMenuItem);
@@ -326,28 +338,42 @@ public class FinancialsView extends FrameView {
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void rdo_annuityItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdo_annuityItemStateChanged
+        if(rdo_annuity.isSelected()) {
+            lbl_amount.setText(Annuity.AMOUNTDESCRIPTION + ":");
+            lbl_amount.setText(Annuity.RESULTDESCRIPTION + ":");
+        }
+    }//GEN-LAST:event_rdo_annuityItemStateChanged
+
+    private void rdo_loanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdo_loanItemStateChanged
+        if(rdo_loan.isSelected()) {
+            lbl_amount.setText(Loan.AMOUNTDESCRIPTION + ":");
+            lbl_amount.setText(Loan.RESULTDESCRIPTION + ":");
+        }
+    }//GEN-LAST:event_rdo_loanItemStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_calculate;
+    private javax.swing.JButton btn_clear;
+    private javax.swing.JButton btn_schedule;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JButton jbtnCalc;
-    private javax.swing.JButton jbtnClear;
-    private javax.swing.JButton jbtnSched;
-    private javax.swing.JRadioButton jradAnnuity;
-    private javax.swing.JRadioButton jradLoan;
-    private javax.swing.JTextField jtxtAmt;
-    private javax.swing.JTextField jtxtRate;
-    private javax.swing.JTextField jtxtResult;
-    private javax.swing.JTextField jtxtTerm;
+    private javax.swing.JLabel lbl_amount;
+    private javax.swing.JLabel lbl_annualRate;
+    private javax.swing.JLabel lbl_financialOperation;
+    private javax.swing.JLabel lbl_result;
+    private javax.swing.JLabel lbl_term;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
+    private javax.swing.JRadioButton rdo_annuity;
+    private javax.swing.JRadioButton rdo_loan;
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
+    private javax.swing.JTextField txt_amount;
+    private javax.swing.JTextField txt_rate;
+    private javax.swing.JTextField txt_result;
+    private javax.swing.JTextField txt_term;
     // End of variables declaration//GEN-END:variables
 
     private final Timer messageTimer;

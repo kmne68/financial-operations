@@ -14,27 +14,27 @@
                   <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel4" min="-2" pref="176" max="-2" attributes="0"/>
+                          <Component id="lbl_result" min="-2" pref="176" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jtxtResult" min="-2" pref="181" max="-2" attributes="0"/>
+                          <Component id="txt_result" min="-2" pref="181" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel1" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
-                              <Component id="jLabel3" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_amount" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                              <Component id="lbl_annualRate" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
+                              <Component id="lbl_term" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
+                              <Component id="lbl_financialOperation" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jradAnnuity" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rdo_annuity" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jradLoan" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rdo_loan" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jtxtRate" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
-                              <Component id="jtxtAmt" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
-                              <Component id="jtxtTerm" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
+                              <Component id="txt_rate" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
+                              <Component id="txt_amount" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
+                              <Component id="txt_term" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -44,14 +44,14 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jbtnCalc" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_calculate" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jbtnSched" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_schedule" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jbtnClear" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_clear" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -66,142 +66,148 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jradAnnuity" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jradLoan" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_financialOperation" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rdo_annuity" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rdo_loan" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtxtAmt" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_amount" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_amount" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtxtRate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_annualRate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_rate" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtxtTerm" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_term" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_term" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jbtnCalc" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_calculate" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="22" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jtxtResult" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_result" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_result" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jbtnSched" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_schedule" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jbtnClear" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_clear" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="34" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="lbl_amount">
           <Properties>
             <Property name="font" type="java.awt.Font" resourceKey="jLabel2.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jLabel1.text"/>
-            <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="lbl_amount.text"/>
+            <Property name="name" type="java.lang.String" value="lbl_amount" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtAmt">
+        <Component class="javax.swing.JTextField" name="txt_amount">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="toolTipText" type="java.lang.String" resourceKey="jtxtAmt.toolTipText"/>
-            <Property name="name" type="java.lang.String" value="jtxtAmt" noResource="true"/>
+            <Property name="toolTipText" type="java.lang.String" resourceKey="txt_amount.toolTipText"/>
+            <Property name="name" type="java.lang.String" value="txt_amount" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="lbl_annualRate">
           <Properties>
-            <Property name="font" type="java.awt.Font" resourceKey="jLabel2.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jLabel2.text"/>
-            <Property name="name" type="java.lang.String" value="jLabel2" noResource="true"/>
+            <Property name="font" type="java.awt.Font" resourceKey="lbl_annualRate.font"/>
+            <Property name="text" type="java.lang.String" resourceKey="lbl_annualRate.text"/>
+            <Property name="name" type="java.lang.String" value="lbl_annualRate" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtRate">
-          <Properties>
-            <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="toolTipText" type="java.lang.String" resourceKey="jtxtRate.toolTipText"/>
-            <Property name="name" type="java.lang.String" value="jtxtRate" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
-          <Properties>
-            <Property name="font" type="java.awt.Font" resourceKey="jLabel2.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jLabel3.text"/>
-            <Property name="name" type="java.lang.String" value="jLabel3" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jtxtTerm">
+        <Component class="javax.swing.JTextField" name="txt_rate">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="toolTipText" type="java.lang.String" resourceKey="jtxtTerm.toolTipText"/>
-            <Property name="name" type="java.lang.String" value="jtxtTerm" noResource="true"/>
+            <Property name="toolTipText" type="java.lang.String" resourceKey="txt_rate.toolTipText"/>
+            <Property name="name" type="java.lang.String" value="txt_rate" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Component class="javax.swing.JLabel" name="lbl_term">
           <Properties>
             <Property name="font" type="java.awt.Font" resourceKey="jLabel2.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jLabel5.text"/>
-            <Property name="name" type="java.lang.String" value="jLabel5" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="lbl_term.text"/>
+            <Property name="name" type="java.lang.String" value="lbl_term" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
-          <Properties>
-            <Property name="font" type="java.awt.Font" resourceKey="jLabel2.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jLabel4.text"/>
-            <Property name="name" type="java.lang.String" value="jLabel4" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jtxtResult">
+        <Component class="javax.swing.JTextField" name="txt_term">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="toolTipText" type="java.lang.String" resourceKey="jtxtResult.toolTipText"/>
-            <Property name="name" type="java.lang.String" value="jtxtResult" noResource="true"/>
+            <Property name="toolTipText" type="java.lang.String" resourceKey="txt_term.toolTipText"/>
+            <Property name="name" type="java.lang.String" value="txt_term" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jradAnnuity">
+        <Component class="javax.swing.JLabel" name="lbl_financialOperation">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jLabel2.font"/>
+            <Property name="text" type="java.lang.String" resourceKey="lbl_financialOperation.text"/>
+            <Property name="name" type="java.lang.String" value="lbl_financialOperation" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_result">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jLabel2.font"/>
+            <Property name="text" type="java.lang.String" resourceKey="lbl_result.text"/>
+            <Property name="name" type="java.lang.String" value="lbl_result" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txt_result">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="toolTipText" type="java.lang.String" resourceKey="txt_result.toolTipText"/>
+            <Property name="name" type="java.lang.String" value="txt_result" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rdo_annuity">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup1"/>
             </Property>
-            <Property name="font" type="java.awt.Font" resourceKey="jradAnnuity.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jradAnnuity.text"/>
-            <Property name="name" type="java.lang.String" value="jradAnnuity" noResource="true"/>
+            <Property name="font" type="java.awt.Font" resourceKey="rdo_annuity.font"/>
+            <Property name="text" type="java.lang.String" resourceKey="rdo_annuity.text"/>
+            <Property name="name" type="java.lang.String" value="rdo_annuity" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="rdo_annuityItemStateChanged"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jradLoan">
+        <Component class="javax.swing.JRadioButton" name="rdo_loan">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup1"/>
             </Property>
-            <Property name="font" type="java.awt.Font" resourceKey="jradLoan.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jradLoan.text"/>
-            <Property name="name" type="java.lang.String" value="jradLoan" noResource="true"/>
+            <Property name="font" type="java.awt.Font" resourceKey="rdo_loan.font"/>
+            <Property name="text" type="java.lang.String" resourceKey="rdo_loan.text"/>
+            <Property name="name" type="java.lang.String" value="rdo_loan" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="rdo_loanItemStateChanged"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_calculate">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="btn_calculate.text"/>
+            <Property name="name" type="java.lang.String" value="btn_calculate" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jbtnCalc">
+        <Component class="javax.swing.JButton" name="btn_schedule">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jbtnCalc.text"/>
-            <Property name="name" type="java.lang.String" value="jbtnCalc" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="jbtnSched">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jbtnSched.text"/>
+            <Property name="text" type="java.lang.String" resourceKey="btn_schedule.text"/>
             <Property name="enabled" type="boolean" value="false"/>
-            <Property name="name" type="java.lang.String" value="jbtnSched" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="btn_schedule" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jbtnClear">
+        <Component class="javax.swing.JButton" name="btn_clear">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jbtnClear.text"/>
-            <Property name="name" type="java.lang.String" value="jbtnClear" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="btn_clear.text"/>
+            <Property name="name" type="java.lang.String" value="btn_clear" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>
