@@ -13,7 +13,8 @@ abstract public class Financial {
     
     private double deposit;
     private double rate;    
-    private int term;    
+    private int term; 
+    private String errorMessage;
     
     //private double fv;     //final value of annuity
     public Financial() {
@@ -22,6 +23,7 @@ abstract public class Financial {
         this.rate = 0.0;
         this.term = 0;
     }
+    
 
     public Financial(double deposit, double rate, int term) {
         
@@ -29,8 +31,25 @@ abstract public class Financial {
         this.rate = rate;
         this.term = term;
     }
+    
+    
+    protected boolean isValid() {
+        
+        this.errorMessage = "";
+        
+        if(this.deposit <= 0) {
+            this.errorMessage += "Deposit must be a positive value. ";
+        }
+        if(this.rate <= 0) {
+            this.errorMessage += "Rate must be a positive value. "; 
+        }
+        if(this.term <= 0) {
+            this.errorMessage += "Term must be a positive value. ";
+        }
+        return this.errorMessage.isEmpty();
+    }
 
-    public double getDeposit() {
+    public double getAmount() {
         return deposit;
     }
 
@@ -55,10 +74,19 @@ abstract public class Financial {
     }  
     
     
+    public String getErrorMessage() {
+        
+        return errorMessage;
+    }
+    
+    
     abstract public double getBeginningBalance(int month);
     abstract public double getPrincipalFactor(int month);
     abstract public double getInterestFactor(int month);
     abstract public double getEndingBalance(int month);
+    
+    abstract public double getResult();
+    
     abstract public String getBeginningBalanceDescription();
     abstract public String getPrincipleFactorDescription();
     abstract public String getInterestFactorDescription();

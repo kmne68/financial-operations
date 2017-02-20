@@ -4,6 +4,7 @@
 
 package financials;
 
+import business.Financial;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -20,7 +21,9 @@ import javax.swing.JFrame;
  * The application's main frame.
  */
 public class FinancialsView extends FrameView {
-
+    
+    private Financial financeObject;
+    
     public FinancialsView(SingleFrameApplication app) {
         super(app);
 

@@ -7,76 +7,72 @@ package business;
  */
 public class Loan extends Financial {
     
-    private double principle, rate, monthlyPayment;
-    private int term;
+    private double monthlyPayment;
     private boolean built;
-    private double[] beginningBalance, interestCharge, endingBalance;
+    private double[] beginningBalance;
+    private double[] interestCharge;
+    private double[] endingBalance;
+    
     
     public Loan() {
         super();
-        
-        this.built = false;
     }
+    
     
     public Loan(double principle, double rate, int term) {
         super(principle, rate, term);
-        this.principle = principle;
-        this.rate = rate;
-        this.term = term;
+
         monthlyPayment = 0;
         built = false;
         
-        buildLoan();
+        if(super.isValid()) {
+            buildLoan();
+        }
     }
 
-    public double getPrinciple() {
-        return principle;
-    }
 
-    public double getRate() {
-        return rate;
-    }
-
-    public double getMonthlyPayment() {
+    @Override
+    public double getResult() {
         if (!built) { buildLoan(); }
         return monthlyPayment;
     }
 
-    public int getTerm() {
-        return term;
-    }
+
     public double getBeginningBalance(int mo) {
         if (!built) { buildLoan(); }
-        if (mo < 1 || mo > this.term) { return 0; }
+        if (mo < 1 || mo > super.getTerm()) { return 0; }
         return this.beginningBalance[mo-1];
     }
+    
     public double getInterestCharge(int mo) {
         if (!built) { buildLoan(); }
-        if (mo < 1 || mo > this.term) { return 0; }
+        if (mo < 1 || mo > super.getTerm()) { return 0; }
         return this.interestCharge[mo-1];
     }
+    
     public double getEndingBalance(int mo) {
         if (!built) { buildLoan(); }
-        if (mo < 1 || mo > this.term) { return 0; }
+        if (mo < 1 || mo > super.getTerm()) { return 0; }
         return this.endingBalance[mo-1];
     }
+    
     private void buildLoan() {
         //calculate Monthly Payment....
-        double morate = this.rate / 12.0;
-        double denom = Math.pow((1+morate),this.term) - 1;
-        this.monthlyPayment = (morate + morate/denom) * this.principle;
+        double monthlyRate = super.getRate() / 12.0;
+        double denom = Math.pow((1 + monthlyRate), super.getTerm()) - 1;
+        this.monthlyPayment = (monthlyRate + monthlyRate/denom) * super.getAmount();
         
-        this.beginningBalance = new double[this.term];
-        this.interestCharge = new double[this.term];
-        this.endingBalance = new double[this.term];
+        this.beginningBalance = new double[super.getTerm()];
+        this.interestCharge = new double[super.getTerm()];
+        this.endingBalance = new double[super.getTerm()];
         
-        this.beginningBalance[0] = this.principle;
-        for(int i=0; i< this.term; i++) {
-            if (i > 0) {
-                this.beginningBalance[i] = this.endingBalance[i-1];
+        this.beginningBalance[0] = super.getAmount();
+        for(int year = 0; year < super.getTerm(); year++) {
+            if (year > 0) {
+                this.beginningBalance[year] = this.endingBalance[year-1];
             }
-            this.interestCharge[i] = this.beginningBalance[i] * morate;
-            this.endingBalance[i] = this.beginningBalance[i] + this.interestCharge[i] - this.monthlyPayment;
+            this.interestCharge[year] = this.beginningBalance[year] * monthlyRate;
+            this.endingBalance[year] = this.beginningBalance[year] + this.interestCharge[year] - this.monthlyPayment;
         }
     }
 
