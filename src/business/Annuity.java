@@ -62,8 +62,11 @@ public class Annuity extends Financial {
         //this.fv = 0;
         //double intearned=0;
         this.beginningBalance = new double[super.getTerm()];
+        System.out.println("term " + this.beginningBalance.toString());
         this.interestEarned = new double[super.getTerm()];
+        System.out.println("term " + this.interestEarned.toString());
         this.endingBalance = new double[super.getTerm()];
+        System.out.println("term " + this.endingBalance.toString());
         
         beginningBalance[0] = 0;
         for (int month = 0; month < super.getTerm(); month++) {

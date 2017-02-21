@@ -14,6 +14,7 @@ import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
 import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
@@ -193,6 +194,11 @@ public class FinancialsView extends FrameView {
 
         btn_calculate.setText(resourceMap.getString("btn_calculate.text")); // NOI18N
         btn_calculate.setName("btn_calculate"); // NOI18N
+        btn_calculate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_calculateActionPerformed(evt);
+            }
+        });
 
         btn_schedule.setText(resourceMap.getString("btn_schedule.text")); // NOI18N
         btn_schedule.setEnabled(false);
@@ -342,6 +348,7 @@ public class FinancialsView extends FrameView {
         if(rdo_annuity.isSelected()) {
             lbl_amount.setText(Annuity.AMOUNTDESCRIPTION + ":");
             lbl_amount.setText(Annuity.RESULTDESCRIPTION + ":");
+            
         }
     }//GEN-LAST:event_rdo_annuityItemStateChanged
 
@@ -349,8 +356,33 @@ public class FinancialsView extends FrameView {
         if(rdo_loan.isSelected()) {
             lbl_amount.setText(Loan.AMOUNTDESCRIPTION + ":");
             lbl_amount.setText(Loan.RESULTDESCRIPTION + ":");
+            financeObject = new Loan();
         }
     }//GEN-LAST:event_rdo_loanItemStateChanged
+
+    private void btn_calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calculateActionPerformed
+        double amount;
+        double rate;
+        int term;
+        
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        
+        // remember to add try/catch data pull from form
+        amount = Double.parseDouble(txt_amount.getText());
+        rate = Double.parseDouble(txt_rate.getText());
+        term = Integer.parseInt(txt_term.getText());
+        
+        if(rdo_annuity.isSelected()) {            
+            financeObject = new Annuity();
+        } else if (rdo_loan.isSelected()) {
+            financeObject = new Loan();
+        } else {
+            statusMessageLabel.setText("Unknown financial object type.");
+            return;
+        }
+        txt_result.setText(currency.format(financeObject.getResult()));
+        btn_schedule.setEnabled(true);
+    }//GEN-LAST:event_btn_calculateActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_calculate;
