@@ -1,5 +1,11 @@
 /*
  * FinancialsView.java
+ *
+ * @author Keith Emery
+ * IS 287
+ * Spring, 2017
+ * Instructor P. Daniel
+ * Assignment 4
  */
 
 package financials;
@@ -19,6 +25,11 @@ import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * The application's main frame.
@@ -199,6 +210,11 @@ public class FinancialsView extends FrameView {
         btn_schedule.setText(resourceMap.getString("btn_schedule.text")); // NOI18N
         btn_schedule.setEnabled(false);
         btn_schedule.setName("btn_schedule"); // NOI18N
+        btn_schedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_scheduleActionPerformed(evt);
+            }
+        });
 
         btn_clear.setText(resourceMap.getString("btn_clear.text")); // NOI18N
         btn_clear.setName("btn_clear"); // NOI18N
@@ -212,20 +228,31 @@ public class FinancialsView extends FrameView {
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_calculate)
+                .addGap(149, 149, 149))
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(73, 73, 73)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(lbl_result, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_result, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(73, 73, 73)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_amount, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_annualRate, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_term, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_financialOperation))
-                        .addGap(18, 18, 18)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbl_result, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(btn_schedule)
+                        .addGap(49, 49, 49)
+                        .addComponent(btn_clear))
+                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txt_result, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(mainPanelLayout.createSequentialGroup()
                                 .addComponent(rdo_annuity)
@@ -235,19 +262,6 @@ public class FinancialsView extends FrameView {
                             .addComponent(txt_amount, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_term, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(88, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addComponent(btn_calculate)
-                        .addGap(149, 149, 149))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btn_schedule)
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(btn_clear)
-                                .addGap(10, 10, 10)))
-                        .addGap(150, 150, 150))))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,15 +285,15 @@ public class FinancialsView extends FrameView {
                     .addComponent(txt_term, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btn_calculate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_result, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_result, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(33, 33, 33)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_result, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_result))
                 .addGap(18, 18, 18)
-                .addComponent(btn_schedule)
-                .addGap(18, 18, 18)
-                .addComponent(btn_clear)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_schedule)
+                    .addComponent(btn_clear))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -414,8 +428,61 @@ public class FinancialsView extends FrameView {
         txt_result.setText("");
         
         functionGroup.clearSelection();
-        
+        btn_schedule.setEnabled(false);
+        lbl_amount.setText("Amount");
+        lbl_result.setText("Result");
     }//GEN-LAST:event_btn_clearActionPerformed
+
+    private void btn_scheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_scheduleActionPerformed
+        
+        statusMessageLabel.setText("");
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        JTable tbl_schedule;
+   //     tbl_schedule.setName(null);
+        DefaultTableModel model;
+        String[] columnNames;
+        String[][] tableValues;
+        
+        if(financeObject instanceof Annuity) {
+     //       columnNames = new String[] {"Month", "Initial Annuity Value", "Deposit", "Interest Earned", "Ending Annuity Value"};
+            columnNames = new String[] {"Month", Annuity.BEGINNINGBALANCEDESCRIPTION, Annuity.PRINCIPLEFACTORDESCRIPTION,
+                Annuity.INTERESTFACTORDESCRIPTION, Annuity.ENDINGBALANCEDESCRIPTION};
+            
+
+    // "month", Annuity.BegBal, Annuity.Printfacotr, Annuity.intfactodesc, annuity.endbaldesc);
+           // tableValues = new String[financeObject.getTerm()][5]; 
+        } else if (financeObject instanceof Loan) {
+            columnNames = new String[] {"Month", "Initial Loan Balance", "Payment", "Interest Charged", "Ending Loan Balance", "Principle Paid"};
+            // cols = "month", loan.constants...
+            
+        //    tableValues = new String[financeObject.getTerm()][6]; 
+        } else {
+            statusMessageLabel.setText("Unknown financial operation.");
+            return;
+        }
+        tableValues = new String[financeObject.getTerm()][columnNames.length];
+        
+        
+        model = new DefaultTableModel(tableValues, columnNames);
+        
+        tbl_schedule = new JTable(model);
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tbl_schedule.getDefaultRenderer(Object.class);
+        renderer.setHorizontalAlignment(JLabel.RIGHT);
+        
+        // fill table cells here
+        JScrollPane scrollPane = new JScrollPane(tbl_schedule);
+        JDialog dg = new JDialog();
+        dg.add(scrollPane);
+        dg.setTitle(financeObject.getTableTitle() + " schedule");
+        dg.setBounds(150, 400, 600, 300);
+        dg.setVisible(true);
+        
+        tbl_schedule.setModel(model);
+        // class needs to tell the super class what its title is
+        // create columns and table (using instanceof, not rdo_buttons)
+        
+        
+    }//GEN-LAST:event_btn_scheduleActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_calculate;

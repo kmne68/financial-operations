@@ -1,14 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package business;
 
-/**
+/*
+ * Financial.java
  *
- * @author Keith
+ * @author Keith Emery
+ * IS 287
+ * Spring, 2017
+ * Instructor P. Daniel
+ * Assignment 4
  */
+
 abstract public class Financial {
     
     private double deposit;
@@ -46,7 +48,7 @@ abstract public class Financial {
         if(this.term <= 0) {
             this.errorMessage += "Term must be a positive value. ";
         }
-        return this.errorMessage.isEmpty();
+        return this.getErrorMessage().isEmpty();
     }
 
     public double getAmount() {
@@ -74,14 +76,19 @@ abstract public class Financial {
     }  
     
     
+    protected void setErrorMessage(String emsg) {
+        this.errorMessage = emsg;
+    }
+    
+    
     public String getErrorMessage() {
         
         return errorMessage;
     }
     
     
+    abstract public double getPrincipleFactor();
     abstract public double getBeginningBalance(int month);
-    abstract public double getPrincipalFactor(int month);
     abstract public double getInterestFactor(int month);
     abstract public double getEndingBalance(int month);
     
@@ -91,5 +98,7 @@ abstract public class Financial {
     abstract public String getPrincipleFactorDescription();
     abstract public String getInterestFactorDescription();
     abstract public String getEndingBalanceDescription();
+    
+    abstract public String getTableTitle();
     
 }
