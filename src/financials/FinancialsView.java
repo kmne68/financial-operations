@@ -131,12 +131,11 @@ public class FinancialsView extends FrameView {
         statusMessageLabel = new javax.swing.JLabel();
         statusAnimationLabel = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        functionGroup = new javax.swing.ButtonGroup();
 
         mainPanel.setName("mainPanel"); // NOI18N
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FinancialsView.class);
-        lbl_amount.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
         lbl_amount.setText(resourceMap.getString("lbl_amount.text")); // NOI18N
         lbl_amount.setName("lbl_amount"); // NOI18N
 
@@ -152,7 +151,6 @@ public class FinancialsView extends FrameView {
         txt_rate.setToolTipText(resourceMap.getString("txt_rate.toolTipText")); // NOI18N
         txt_rate.setName("txt_rate"); // NOI18N
 
-        lbl_term.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
         lbl_term.setText(resourceMap.getString("lbl_term.text")); // NOI18N
         lbl_term.setName("lbl_term"); // NOI18N
 
@@ -160,11 +158,9 @@ public class FinancialsView extends FrameView {
         txt_term.setToolTipText(resourceMap.getString("txt_term.toolTipText")); // NOI18N
         txt_term.setName("txt_term"); // NOI18N
 
-        lbl_financialOperation.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
         lbl_financialOperation.setText(resourceMap.getString("lbl_financialOperation.text")); // NOI18N
         lbl_financialOperation.setName("lbl_financialOperation"); // NOI18N
 
-        lbl_result.setFont(resourceMap.getFont("jLabel2.font")); // NOI18N
         lbl_result.setText(resourceMap.getString("lbl_result.text")); // NOI18N
         lbl_result.setName("lbl_result"); // NOI18N
 
@@ -172,7 +168,7 @@ public class FinancialsView extends FrameView {
         txt_result.setToolTipText(resourceMap.getString("txt_result.toolTipText")); // NOI18N
         txt_result.setName("txt_result"); // NOI18N
 
-        buttonGroup1.add(rdo_annuity);
+        functionGroup.add(rdo_annuity);
         rdo_annuity.setFont(resourceMap.getFont("rdo_annuity.font")); // NOI18N
         rdo_annuity.setText(resourceMap.getString("rdo_annuity.text")); // NOI18N
         rdo_annuity.setName("rdo_annuity"); // NOI18N
@@ -182,7 +178,7 @@ public class FinancialsView extends FrameView {
             }
         });
 
-        buttonGroup1.add(rdo_loan);
+        functionGroup.add(rdo_loan);
         rdo_loan.setFont(resourceMap.getFont("rdo_loan.font")); // NOI18N
         rdo_loan.setText(resourceMap.getString("rdo_loan.text")); // NOI18N
         rdo_loan.setName("rdo_loan"); // NOI18N
@@ -206,6 +202,11 @@ public class FinancialsView extends FrameView {
 
         btn_clear.setText(resourceMap.getString("btn_clear.text")); // NOI18N
         btn_clear.setName("btn_clear"); // NOI18N
+        btn_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_clearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -347,7 +348,7 @@ public class FinancialsView extends FrameView {
     private void rdo_annuityItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdo_annuityItemStateChanged
         if(rdo_annuity.isSelected()) {
             lbl_amount.setText(Annuity.AMOUNTDESCRIPTION + ":");
-            lbl_amount.setText(Annuity.RESULTDESCRIPTION + ":");
+            lbl_result.setText(Annuity.RESULTDESCRIPTION + ":");
             
         }
     }//GEN-LAST:event_rdo_annuityItemStateChanged
@@ -355,27 +356,47 @@ public class FinancialsView extends FrameView {
     private void rdo_loanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdo_loanItemStateChanged
         if(rdo_loan.isSelected()) {
             lbl_amount.setText(Loan.AMOUNTDESCRIPTION + ":");
-            lbl_amount.setText(Loan.RESULTDESCRIPTION + ":");
+            lbl_result.setText(Loan.RESULTDESCRIPTION + ":");
             financeObject = new Loan();
         }
     }//GEN-LAST:event_rdo_loanItemStateChanged
 
     private void btn_calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calculateActionPerformed
-        double amount;
-        double rate;
-        int term;
         
         NumberFormat currency = NumberFormat.getCurrencyInstance();
         
-        // remember to add try/catch data pull from form
-        amount = Double.parseDouble(txt_amount.getText());
-        rate = Double.parseDouble(txt_rate.getText());
-        term = Integer.parseInt(txt_term.getText());
+        double amount;
+        double rate;
+        int term;        
+        
+        try {
+            amount = Double.parseDouble(txt_amount.getText());
+        } catch (NumberFormatException e) {
+            statusMessageLabel.setText("Amount field error: " + e.getMessage());
+            txt_amount.requestFocusInWindow();
+            return;
+        }
+        
+        try {
+            rate = Double.parseDouble(txt_rate.getText());
+        } catch(NumberFormatException e) {
+            statusMessageLabel.setText("Rate field error: " + e.getMessage());
+            txt_rate.requestFocusInWindow();
+            return;
+        }
+        
+        try {
+            term = Integer.parseInt(txt_term.getText());
+        } catch (NumberFormatException e) {
+            statusMessageLabel.setText("Term value field error: " + e.getMessage());
+            txt_term.requestFocusInWindow();
+            return;
+        }
         
         if(rdo_annuity.isSelected()) {            
-            financeObject = new Annuity();
+            financeObject = new Annuity(amount, rate, term);
         } else if (rdo_loan.isSelected()) {
-            financeObject = new Loan();
+            financeObject = new Loan(amount, rate, term);
         } else {
             statusMessageLabel.setText("Unknown financial object type.");
             return;
@@ -384,11 +405,23 @@ public class FinancialsView extends FrameView {
         btn_schedule.setEnabled(true);
     }//GEN-LAST:event_btn_calculateActionPerformed
 
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
+        // Clear the form
+        statusMessageLabel.setText("");
+        txt_amount.setText("");
+        txt_rate.setText("");
+        txt_term.setText("");
+        txt_result.setText("");
+        
+        functionGroup.clearSelection();
+        
+    }//GEN-LAST:event_btn_clearActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_calculate;
     private javax.swing.JButton btn_clear;
     private javax.swing.JButton btn_schedule;
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup functionGroup;
     private javax.swing.JLabel lbl_amount;
     private javax.swing.JLabel lbl_annualRate;
     private javax.swing.JLabel lbl_financialOperation;

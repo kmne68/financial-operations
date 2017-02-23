@@ -30,7 +30,7 @@ public class Annuity extends Financial {
         this.built = false;
         if(super.isValid()) {
         //this.fv = 0;
-            calculateAnnuity();
+        calculateAnnuity();
         }
     }
     
@@ -62,7 +62,7 @@ public class Annuity extends Financial {
         //this.fv = 0;
         //double intearned=0;
         this.beginningBalance = new double[super.getTerm()];
-        System.out.println("term " + this.beginningBalance.toString());
+        System.out.println("term " + super.getTerm());
         this.interestEarned = new double[super.getTerm()];
         System.out.println("term " + this.interestEarned.toString());
         this.endingBalance = new double[super.getTerm()];
