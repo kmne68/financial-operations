@@ -106,27 +106,27 @@ public class Loan extends Financial {
 
     @Override
     public double getInterestFactor(int month) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.getInterestCharge(month);
     }
 
     @Override
     public String getBeginningBalanceDescription() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Loan.BEGINNINGBALANCEDESCRIPTION;
     }
 
     @Override
     public String getPrincipleFactorDescription() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Loan.PRINCIPLEFACTORDESCRIPTION;
     }
 
     @Override
     public String getInterestFactorDescription() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Loan.INTERESTFACTORDESCRIPTION;
     }
 
     @Override
     public String getEndingBalanceDescription() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Loan.ENDINGBALANCEDESCRIPTION;
     }
 
 
@@ -141,5 +141,16 @@ public class Loan extends Financial {
         if(!built) { 
             buildLoan(); 
         }
-        return this.monthlyPayment;    }
+        return this.monthlyPayment;
+    }
+    
+    
+    public double getPrinciplePaid(int month) {
+        double principlePaid = 0.0;
+        
+        principlePaid = (this.beginningBalance[month - 1] - this.endingBalance[month - 1]) * -1;
+            
+        return principlePaid;
+    
+    }
 }

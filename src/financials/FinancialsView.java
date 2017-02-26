@@ -417,8 +417,13 @@ public class FinancialsView extends FrameView {
         }
         txt_result.setText(currency.format(financeObject.getResult()));
         btn_schedule.setEnabled(true);
+        
+        if(!financeObject.getErrorMessage().isEmpty()) {
+            statusMessageLabel.setText(financeObject.getErrorMessage());
+        }
     }//GEN-LAST:event_btn_calculateActionPerformed
 
+    
     private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
         // Clear the form
         statusMessageLabel.setText("");
@@ -435,11 +440,6 @@ public class FinancialsView extends FrameView {
 
     private void btn_scheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_scheduleActionPerformed
         
-        statusMessageLabel.setText("");
-        NumberFormat currency = NumberFormat.getCurrencyInstance();
-        JTable tbl_schedule;
-   //     tbl_schedule.setName(null);
-        DefaultTableModel model;
         String[] columnNames;
         String[][] tableValues;
         
@@ -447,29 +447,47 @@ public class FinancialsView extends FrameView {
      //       columnNames = new String[] {"Month", "Initial Annuity Value", "Deposit", "Interest Earned", "Ending Annuity Value"};
             columnNames = new String[] {"Month", Annuity.BEGINNINGBALANCEDESCRIPTION, Annuity.PRINCIPLEFACTORDESCRIPTION,
                 Annuity.INTERESTFACTORDESCRIPTION, Annuity.ENDINGBALANCEDESCRIPTION};
-            
-
     // "month", Annuity.BegBal, Annuity.Printfacotr, Annuity.intfactodesc, annuity.endbaldesc);
            // tableValues = new String[financeObject.getTerm()][5]; 
         } else if (financeObject instanceof Loan) {
-            columnNames = new String[] {"Month", "Initial Loan Balance", "Payment", "Interest Charged", "Ending Loan Balance", "Principle Paid"};
-            // cols = "month", loan.constants...
-            
-        //    tableValues = new String[financeObject.getTerm()][6]; 
+            columnNames = new String[] {"Month", Loan.BEGINNINGBALANCEDESCRIPTION,  Loan.RESULTDESCRIPTION, Loan.INTERESTFACTORDESCRIPTION, Loan.ENDINGBALANCEDESCRIPTION, Loan.PRINCIPLEPAIDDESCRIPTION };
+            // "Initial Loan Balance","Payment","Interest Charged","Ending Loan Balance","Principle Paid"
+            //    tableValues = new String[financeObject.getTerm()][6]; 
         } else {
             statusMessageLabel.setText("Unknown financial operation.");
             return;
         }
+        
+        statusMessageLabel.setText("");
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+   //     tbl_schedule.setName(null);
         tableValues = new String[financeObject.getTerm()][columnNames.length];
         
-        
+        DefaultTableModel model;         
         model = new DefaultTableModel(tableValues, columnNames);
-        
+        JTable tbl_schedule;        
         tbl_schedule = new JTable(model);
-        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tbl_schedule.getDefaultRenderer(Object.class);
-        renderer.setHorizontalAlignment(JLabel.RIGHT);
+        DefaultTableCellRenderer scheduleTableRenderer = (DefaultTableCellRenderer) tbl_schedule.getDefaultRenderer(Object.class);
+        scheduleTableRenderer.setHorizontalAlignment(JLabel.RIGHT);
+        tbl_schedule.setDefaultRenderer(Object.class, scheduleTableRenderer); // added
         
         // fill table cells here
+        for(int year = 1; year <= financeObject.getTerm(); year++) {
+            
+            tbl_schedule.setValueAt(year, year - 1, 0);
+            tbl_schedule.setValueAt(currency.format(financeObject.getBeginningBalance(year)), year - 1, 1);
+            tbl_schedule.setValueAt(currency.format(financeObject.getPrincipleFactor()), year - 1, 2);
+            tbl_schedule.setValueAt(currency.format(financeObject.getInterestFactor(year)), year - 1, 3);
+            tbl_schedule.setValueAt(currency.format(financeObject.getEndingBalance(year)), year - 1, 4);
+
+            if(financeObject instanceof Loan) {
+                Loan loan = (Loan) financeObject;
+                tbl_schedule.setValueAt(currency.format(loan.getPrinciplePaid(year)), year - 1, 5);
+                
+            }
+        }
+        
+        
         JScrollPane scrollPane = new JScrollPane(tbl_schedule);
         JDialog dg = new JDialog();
         dg.add(scrollPane);
@@ -477,7 +495,7 @@ public class FinancialsView extends FrameView {
         dg.setBounds(150, 400, 600, 300);
         dg.setVisible(true);
         
-        tbl_schedule.setModel(model);
+      //  tbl_schedule.setModel(model);
         // class needs to tell the super class what its title is
         // create columns and table (using instanceof, not rdo_buttons)
         
